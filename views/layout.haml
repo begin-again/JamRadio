@@ -4,7 +4,8 @@
     %meta{ :'http-equiv' => 'Content-Type', :content => 'text/html'}
     %meta{ :'http-equiv' => 'X-UA-Compatible', :content => 'IE=edge'}
     = css :main
-    = js :main
+    %script{ src: "https://code.jquery.com/jquery-2.2.4.min.js" }
+    -# %script{ src: "/js/app.js"}
     %title= locals[:page_title]
   %body
     #wrapper
