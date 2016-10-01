@@ -12,17 +12,17 @@ begin
 rescue LoadError
 end
 
-begin
-  # tasks included:
-  # rdoc - create from new/changed files
-  # rdoc:clean - clean rdoc path
-  # rdoc:force - re-create all
-  require 'rdoc/task'
-  RDoc::Task.new(rdoc: 'rdoc', clobber_rdoc: 'rdoc:clean', rerdoc: 'rdoc:force' ) do |rdoc|
-    rdoc.main = 'README'
-    rdoc.title = 'Jamendo Radio'
-    rdoc.rdoc_files.include('README.rdoc', 'lib/**/*.rb')
-    rdoc.rdoc_dir = 'html'
-  end
-rescue LoadError
-end
+# begin
+#   # tasks included:
+#   # rdoc - create from new/changed files
+#   # rdoc:clean - clean rdoc path
+#   # rdoc:force - re-create all
+#   require 'rdoc/task'
+#   RDoc::Task.new(rdoc: 'rdoc', clobber_rdoc: 'rdoc:clean', rerdoc: 'rdoc:force' ) do |rdoc|
+#     rdoc.main = 'README'
+#     rdoc.title = 'Jamendo Radio'
+#     rdoc.rdoc_files.include('README.rdoc', 'lib/**/*.rb')
+#     rdoc.rdoc_dir = 'html'
+#   end
+# rescue LoadError
+# end
