@@ -1,0 +1,16 @@
+- if locals[:results]
+  - unless locals[:results].empty?
+    .results
+      %p= locals[:query]
+      - locals[:results].each do |album|
+        .result
+          %a.album{href: "/album/id/#{album[:id]}"}
+            %img{src: album[:image]}
+            %p= "Name: #{album[:name]}"
+            %p= "Released: #{album[:releasedate]}"
+- else
+  - if locals[:headers]
+    %p= locals[:headers][:status]
+    %p= locals[:headers][:error_message]
+  - else
+    %p Unknown Error

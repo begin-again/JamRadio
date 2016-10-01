@@ -1,0 +1,2 @@
+= Jamendo Radio
+Ruby interface for jamendo.com

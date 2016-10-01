@@ -1,0 +1,22 @@
+%h2
+  %a{href: '/artists'} Artist Search
+- if locals[:results]
+  - unless locals[:results].empty?
+    #results
+      %p Query: #{locals[:query]}
+      - locals[:results].each do |artist|
+        .result
+          - if artist[:image] != ""
+            %img{src: artist[:image], class: 'artist', width: 100, height: 100}
+          %a{href: "/artist/id/#{artist[:id]}"}= artist[:name]
+          - if artist[:website] != ""
+            %a{href: artist[:website]} Artist Website
+          %a{href: artist[:shorturl]} View on Jamendo
+  - else
+    %p No artists found
+- else
+  - if locals[:headers]
+    %p= locals[:headers][:status]
+    %p= locals[:headers][:error_message]
+  - else
+    %p Unknown Error

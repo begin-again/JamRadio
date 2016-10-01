@@ -1,0 +1,12 @@
+!!! 5
+%html
+  %head
+    %meta{ :'http-equiv' => 'Content-Type', :content => 'text/html'}
+    %meta{ :'http-equiv' => 'X-UA-Compatible', :content => 'IE=edge'}
+    = css :main
+    = js :main
+    %title= locals[:page_title]
+  %body
+    #wrapper
+      #content
+        =yield

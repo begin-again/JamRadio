@@ -1,0 +1,64 @@
+
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+a {
+  color: lighten($primary-color, 50%);
+  outline: none;
+}
+
+body {
+  font: 100% $font-stack;
+  background: $primary-color;
+  color: lighten($primary-color, 50%);
+  padding: 10px;
+}
+
+h2 {
+  margin-bottom: 8px;
+  font-size: 150%;
+  a {
+    display: inline-block;
+  }
+}
+
+input {
+  margin-top: 5px
+}
+
+#results {
+  float: left;
+  border: 1px solid red;
+}
+
+.result {
+  margin-bottom: 6px;
+  margin-right: 6px;
+  padding: 5px;
+  border: 2px solid lighten($primary-color, 50%);
+  min-width: 300px;
+  width: 350px;
+  min-height: 100px;
+  box-shadow: gray 2px 2px;
+  border-radius: 8px 4px;
+  float: left;
+  a {
+    display: block;
+  }
+}
+
+
+
+img {
+  float: left;
+  margin-right: 4px;
+
+  .artist {
+    margin: 3px;
+  }
+}
+
+.track {
+  height: 20px;
+}
+

@@ -1,0 +1,17 @@
+%h2 Artist Search
+
+%form{action: '/artists', method: 'post'}
+  %p
+    %label{for: 'name'} Artist Name
+    %br/
+    %input{id: 'name', type: 'text', name: 'name'}
+    %br/
+  %p Sort by
+  %select{ name: 'sort_by'}
+    %option{ value: 'name' } Name
+    %option{ value: 'joindate'} Join Date
+    %option{ value: 'popularity_total', selected: 'selected'} Popular
+    %option{ value: 'popularity_month'} Popular (Month)
+    %option{ value: 'popularity_week'} Popular (Week)
+  %p
+    %input{type: 'submit'}
