@@ -1,5 +1,4 @@
 
-
 class App < Sinatra::Base
   ENV['TZ'] = 'UTC'
 
@@ -8,7 +7,7 @@ class App < Sinatra::Base
     set :cache_enabled, false
     set :sessions, false
     set :show_exceptions, true
-    set :pub, root + '/public'
+    # set :pub, root + '/public'
     set :environment, :development
     set :haml, layout: :layout
   end
@@ -17,18 +16,11 @@ class App < Sinatra::Base
   register Sinatra::Reloader
 
   assets do
-    css :main, [
-    '/css/reset.css',
-    '/css/app.css'
-    ]
-    css :resume, [
-    'css/reset.css',
-    'css/resume.css'
-    ]
-    js :main, [
-      '/js/jquery.js',
-      '/js/app.js'
-    ]
+    serve '/js',     from: 'assets/js'
+    serve '/css',    from: 'assets/css'
+    serve '/images', from: 'assets/images'
+    css :main, ['/css/reset.css','/css/app.css']
+    js  :main, ['/js/app.js']
     css_compression :sass
     js_compression :jsmin
   end
@@ -49,7 +41,7 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    haml :index, layout: :layout, locals: {page_title: 'root'}
+    haml :index, layout: :layout, locals: {page_title: 'Home'}
   end
 
 

@@ -26,10 +26,7 @@ input {
   margin-top: 5px
 }
 
-#results {
-  float: left;
-  border: 1px solid red;
-}
+
 
 .result {
   margin-bottom: 6px;
@@ -47,8 +44,12 @@ input {
   }
 }
 
+.tracks {
+  td: {
+    padding: 3px 3px;
+  }
 
-
+}
 img {
   float: left;
   margin-right: 4px;
@@ -62,3 +63,5 @@ img {
   height: 20px;
 }
 
+td.track_id, th.track_id {
+  visibility: hidden; }
