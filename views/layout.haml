@@ -5,8 +5,8 @@
     %meta{ :'http-equiv' => 'X-UA-Compatible', :content => 'IE=edge'}
     = css :main
     %script{ src: "https://code.jquery.com/jquery-2.2.4.min.js" }
-    -# %script{ src: "/js/app.js"}
-    %title= locals[:page_title]
+    = js :main
+    %title= "Jam Radio - #{locals[:page_title]}"
   %body
     #wrapper
       #content
