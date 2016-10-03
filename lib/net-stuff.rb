@@ -10,7 +10,7 @@ module NetStuff
 
 
   # Jamendo API Client ID
-  ClientID = '984f7e03'
+  ClientID = '56d30c95'
 
   # Jamendo root
   Base = 'https://api.jamendo.com/v3.0/'
