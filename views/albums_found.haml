@@ -6,8 +6,18 @@
         .result
           %a.album{href: "/album/id/#{album[:id]}"}
             %img{src: album[:image]}
-            %p= "Name: #{album[:name]}"
-            %p= "Released: #{album[:releasedate]}"
+          %table
+            %tbody
+              %tr
+                %td
+                  %p Artist:
+                %td
+                  %a{href: "/artist/id/#{album[:artist_id]}" } "#{album[:artist_name]}"
+              %tr
+                %td
+                  %p Album:
+                %td
+                  %a{href: "/album/id/#{album[:album_id]}" } "#{album[:name]}"
 - else
   - if locals[:headers]
     %p= locals[:headers][:status]

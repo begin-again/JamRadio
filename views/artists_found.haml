@@ -1,0 +1,37 @@
+%h2
+  %a{href: '/artists'} Artist Search
+
+- if locals[:artists]
+  .found
+  - unless locals[:artists].empty?
+    %table
+      %thead
+        %tr
+          %th Image
+          %th Artist
+          %th Joined
+          %th Website
+      %tbody
+        - locals[:artists].each do |artist|
+          %tr
+            %td
+              %a{href: "/artist/id/#{artist[:id]}"}
+                - if artist[:image] != ""
+                  %img{src: artist[:image], width: 100, height: 100}
+                -else
+                  .no_image
+                    No Image
+            %td
+              %a{href: "/artist/id/#{artist[:id]}"}= artist[:name]
+            %td= artist[:joindate]
+            %td{style: 'text-align: center'}
+              - if artist[:website] != ""
+                %a{href: artist[:website]} View
+
+
+- else
+  - if locals[:headers]
+    %p= locals[:headers][:status]
+    %p= locals[:headers][:error_message]
+  - else
+    %p Unknown Error

@@ -6,33 +6,39 @@ class App < Sinatra::Base
   include NetStuff
 
   get '/artists/?' do
-    haml :artists, locals: {page_title: 'Artists'}
+    haml :form_artist_search, locals: {page_title: 'Artists'}
   end
 
   post '/artists' do
-    puts params[:name].to_s.scan(Word)
+    # puts params[:name].to_s.scan(Word)
     name = params[:name].to_s.scan(Word).join('+')
     sort_by = params[:sort_by]
     query = "artists?namesearch=#{name}&order=#{sort_by}&limit=20"
     query += "&hasimage=true" if params[:image_only] == 'on'
     result = fetch(query)
-    haml :artists_result, locals: {
+    haml :artists_found, locals: {
       page_title: 'artists',
       headers: result[:headers],
-      results: result[:results],
+      artists: result[:results],
       query: query
       }
   end
 
   get '/artist/id/:id' do
-    query = "artists/albums/?id=#{params[:id]}&order=name_asc&imagesize=100"
+    query = "artists/albums/?id=#{params[:id]}&imagesize=50"
     result = fetch(query)
-    haml :albums_result, locals: {
-      page_title: "Albums - #{result[:results].first[:name]}",
+    haml :artist, locals: {
       headers: result[:headers],
-      results: result[:results].first[:albums],
-      query: query
-      }
-
+      artist: {
+        id: result[:results].first[:id],
+        name: result[:results].first[:name],
+        website: result[:results].first[:website],
+        image: result[:results].first[:image],
+        joindate: result[:results].first[:joindate]
+      },
+      albums: result[:results].first[:albums],
+      page_title: "Artist - #{result[:results].first[:name]}"
+    }
   end
+
 end

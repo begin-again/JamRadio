@@ -1,0 +1,44 @@
+-# Album
+-# GET /v3.0/albums/tracks
+
+- def fancy_seconds seconds
+  - mm, ss = seconds.to_i.divmod(60)
+  - hh, mm = mm.divmod(60)
+  - dd, hh = hh.divmod(24)
+  - if hh > 0
+    - "#{hh.to_s.rjust(2," ")}:#{mm.to_s.rjust(2," ")}:#{ss.to_s.rjust(2,"0")}"
+  - elsif mm > 0
+    - "#{mm.to_s.rjust(2," ")}:#{ss.to_s.rjust(2,"0")}"
+  - elsif ss > 0
+    - "00:#{ss.to_s.rjust(2,"0")}"
+
+= partial :nav
+%h2= locals[:album][:name]
+.album
+  %img{src: album[:image]}
+
+.artist
+  %a{href: "/artist/id/#{locals[:artist][:id]}"}= "Show All From: #{locals[:artist][:name]}"
+
+
+  - unless locals[:tracks].empty?
+    %h3 Tracks
+    .player
+      %section{ id: 'audio'}
+    %table.tracks
+      %thead
+        %tr
+          %th Name
+          %th Duration
+          %th D/L
+          %th Play
+      %tbody
+        - locals[:tracks].each do |track|
+          %tr
+            %td= track[:name]
+            %td= fancy_seconds(track[:duration])
+            %td
+              %a{href: track[:audiodownload]} DL
+            %td
+              %a.html5{href: track[:audio]} Play
+

@@ -1,0 +1,26 @@
+-# Artist
+-# GET /v3.0/artists/albums
+= partial :nav
+%h2= locals[:artist][:name]
+.artist
+  %a{href: artist[:website]}
+    %img{src: artist[:image]}
+.albums
+  - unless locals[:albums].empty?
+    %h3 Albums
+    %table.albums
+      %thead
+        %tr
+          %th
+          %th Name
+          %th Released
+      %tbody
+        - locals[:albums].each do |album|
+          %tr
+            %td
+              %a{href: "/album/id/#{album[:id]}"}
+                %img{src: album[:image]}
+            %td
+              %a{href: "/album/id/#{album[:id]}"}= album[:name]
+            %td= album[:releasedate]
+

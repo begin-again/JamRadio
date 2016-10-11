@@ -1,8 +1,0 @@
-- unless locals[:results].empty?
-  - locals[:results].each do |result|
-    .results
-      %p= result[:name]
-      - result[:tracks].each do |track|
-        .result
-          .track
-            %a{href: track[:audio]}= track[:name]

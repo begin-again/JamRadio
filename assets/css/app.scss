@@ -2,9 +2,28 @@
 $font-stack:    Helvetica, sans-serif;
 $primary-color: #333;
 
+form {
+  p {  clear: left; margin-bottom: 12px;}
+  .option {
+    float: left;
+    margin-left: 3px
+  }
+}
+
+table {
+  td {
+      text-align: left;
+      padding: 5px;
+    }
+}
+
 a {
   color: lighten($primary-color, 50%);
   outline: none;
+  .found {
+    text-decoration: none;
+    .text-align: center;
+  }
 }
 
 body {
@@ -26,8 +45,6 @@ input {
   margin-top: 5px
 }
 
-
-
 .result {
   margin-bottom: 6px;
   margin-right: 6px;
@@ -39,17 +56,34 @@ input {
   box-shadow: gray 2px 2px;
   border-radius: 8px 4px;
   float: left;
-  a {
-    display: block;
+  table {
+    td {
+      text-align: left;
+      padding: 5px;
+      a {
+        display: inline;
+        text-decoration: none;
+        word-wrap: nowrap
+      }
+      a:hover {
+      text-decoration: underline
+      }
+    }
   }
+  a.img {
+    display: block;
+    text-decoration: none;
+  }
+
 }
 
-.tracks {
-  td: {
+.tracks, .albums {
+  td, th {
     padding: 3px 3px;
   }
 
 }
+
 img {
   float: left;
   margin-right: 4px;
@@ -57,11 +91,38 @@ img {
   .artist {
     margin: 3px;
   }
+
 }
 
+.artist, .album, .found {
+  img {
+    float: none;
+  }
+}
 .track {
   height: 20px;
 }
 
 td.track_id, th.track_id {
   visibility: hidden; }
+
+ol.main {
+  list-style-type: square;
+  li {
+    padding: 6px;
+  }
+}
+
+
+.no_image {
+  width: 100px;
+  height: 100px;
+  border: solid 1px black;
+  background: grey;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+
+}

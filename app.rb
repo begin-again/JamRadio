@@ -10,10 +10,14 @@ class App < Sinatra::Base
     # set :pub, root + '/public'
     set :environment, :development
     set :haml, layout: :layout
-  end
 
-  register Sinatra::AssetPack
-  register Sinatra::Reloader
+    register Sinatra::Partial
+    set :partial_template_engine, :haml
+    enable :partial_underscores
+
+    register Sinatra::AssetPack
+    register Sinatra::Reloader
+  end
 
   assets do
     serve '/js',     from: 'assets/js'
@@ -31,6 +35,7 @@ class App < Sinatra::Base
       t = require route
       puts t ? "Success!" : "Failed!"
     rescue Exception => e
+      puts route "... Failed!"
       puts "Route Error: #{e.message}"
     end
   end

@@ -3,7 +3,7 @@ source "https://rubygems.org"
 
 gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-assetpack', require: 'sinatra/assetpack'
-gem 'sinatra-partial'
+gem 'sinatra-partial', require: 'sinatra/partial'
 gem 'sinatra-contrib', require: 'sinatra/reloader'
 gem 'thin'
 gem 'byebug', require: false
