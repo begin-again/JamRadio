@@ -1,5 +1,5 @@
--# Album
--# GET /v3.0/albums/tracks
+-# Tracks
+-# GET /v3.0/tracks
 
 - def fancy_seconds seconds
   - mm, ss = seconds.to_i.divmod(60)
@@ -22,9 +22,9 @@
 = partial :nav
 - if locals[:results]
   - unless locals[:results].empty?
-    %h3 Tracks
     .player
-    %section{ id: 'audio'}
+      #info
+      %section{ id: 'audio'}
     %table.tracks
       %thead
         %tr
@@ -45,7 +45,7 @@
               %a{href: "/album/id/#{track[:album_id]}"}
                 %img{src: track[:album_image]}
             %td
-              %a.html5{href: track[:audio], data:{now_playing: track[:name][0..30]}}= track[:name][0..30]
+              %a.html5{href: track[:audio], data:{playing: track[:name][0..30]}}= track[:name][0..30]
             %td= fancy_seconds(track[:duration])
             %td
               %a{href: track[:audiodownload]} DL

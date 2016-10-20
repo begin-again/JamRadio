@@ -110,7 +110,10 @@ img {
 }
 
 td.track_id, th.track_id {
-  visibility: hidden; }
+  visibility: hidden;
+}
+
+
 
 ol.main {
   list-style-type: square;
@@ -119,6 +122,17 @@ ol.main {
   }
 }
 
+tbody tr:nth-child(even) td {
+  background: darken($primary-color, 2%)
+}
+
+tbody tr:hover td {
+  background: #3f7a89;
+  color: #3d0606;
+  a {
+    color: #3d0606
+  }
+}
 
 .no_image {
   width: 100px;
@@ -131,4 +145,12 @@ ol.main {
   text-align: center;
   text-decoration: none;
 
+}
+
+.player {
+  margin: 5px 0px;
+  #info p {
+    color: #36bcb1;
+    font-weight: bold;
+  }
 }

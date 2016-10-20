@@ -21,7 +21,7 @@ class App < Sinatra::Base
         query += "tags=#{name}&order=#{sort_by}"
       end
     end
-    query += "&include=musicinfo&groupby=artist_id&imagesize=25&limit=20"
+    query += "&include=musicinfo&groupby=artist_id&imagesize=25&limit=10"
 
     result = fetch(query)
     haml :tracks_found, locals: {
