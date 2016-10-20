@@ -3,11 +3,17 @@ $font-stack:    Helvetica, sans-serif;
 $primary-color: #333;
 
 form {
-  p {  clear: left; margin-bottom: 12px;}
+  .chunk {
+    padding: 5px 0px;
+    input[type="text"] {
+      margin-bottom: 5px;
+    }
+  }
   .option {
     float: left;
     margin-left: 3px
   }
+
 }
 
 table {

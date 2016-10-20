@@ -31,14 +31,14 @@
           %th Name
           %th Duration
           %th D/L
-          %th Play
       %tbody
         - locals[:tracks].each do |track|
           %tr
-            %td= track[:name]
+            %td
+              %a.html5{href: track[:audio]}= track[:name]
             %td= fancy_seconds(track[:duration])
             %td
               %a{href: track[:audiodownload]} DL
             %td
-              %a.html5{href: track[:audio]} Play
+
 

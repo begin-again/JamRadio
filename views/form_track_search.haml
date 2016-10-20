@@ -1,0 +1,30 @@
+%h2 Track Search
+
+%form{action: '/tracks', method: 'post'}
+  .chunk
+    %p Search by:
+    %input{type: 'radio', name: 'search-by', value: 'Name', checked: true, id: 'sName'}
+    %label{for: 'sName'} Name
+    %input{type: 'radio', name: 'search-by', value: 'Genre', id: 'sGenre'}
+    %label{for: 'sGenre'} Genre
+  .chunk
+    %input{type: 'checkbox', name: 'is_fuzzy', id: 'chkFuzz', checked: true} Fuzzy?
+  .chunk
+    %input{type:'text',  name: 'name', required: true}
+  .chunk
+  %p Sort by
+  %select{ name: 'sort_by'}
+    %option{ value: 'name' } Name
+    %option{ value: 'joindate'} Join Date
+    %option{ value: 'popularity_total', selected: 'selected'} Popular
+    %option{ value: 'popularity_month'} Popular (Month)
+    %option{ value: 'popularity_week'} Popular (Week)
+    %option{ value: 'buzzrate'} Buzz Rate
+    %option{ value: 'downloads_week'} Downloads Week
+    %option{ value: 'downloads_month'} Download Month
+    %option{ value: 'downloads_total'} Downloads Total
+    %option{ value: 'listens_week'} Listens Week
+    %option{ value: 'listens_month'} Listens Month
+    %option{ value: 'listens_total'} Listens Total
+  .chunk
+    %input{type: 'submit'}

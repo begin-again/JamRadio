@@ -1,0 +1,26 @@
+%h2 Tag Search
+
+%form{action: '/tag/:name', method: 'post'}
+  .optiom
+    %input{id: 'artist', type: 'radio', name: 'ltype', value: 'artist'}
+    %label{for: 'artist'} Artist
+  .option
+    %input{id: 'album', type: 'radio', name: 'ltype', value: 'album'}
+    %label{for: 'album'} Album
+  .option
+    %input{id: 'track', type: 'radio', name: 'ltype', value: 'track'}
+    %label{for: 'track'} Song
+  %p
+    %label{for: 'name'} Tag Name
+    %br/
+    %input{id: 'name', type: 'text', name: 'name'}
+    %br/
+  %p Sort by
+  %select{ name: 'sort_by'}
+    %option{ value: 'name' } Name
+    %option{ value: 'joindate'} Join Date
+    %option{ value: 'popularity_total', selected: 'selected'} Popular
+    %option{ value: 'popularity_month'} Popular (Month)
+    %option{ value: 'popularity_week'} Popular (Week)
+  %p
+    %input{type: 'submit'}

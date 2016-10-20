@@ -1,6 +1,5 @@
 
 require './lib/net-stuff'
-require 'byebug'
 
 class App < Sinatra::Base
   include NetStuff
