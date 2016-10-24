@@ -1,19 +1,8 @@
 $(document).ready(function() {
     var audioSection = $('section#audio');
     var trackRows = $('.tracks tbody tr')
-    $('a.html5').click(function() {
+    var trackInfo = $('#info');
 
-        var audio = $('<audio>', {
-             controls : 'controls',
-             autoplay : 'autoplay'
-        });
-
-        var url = $(this).attr('href');
-        $('<source>').attr('src', url).appendTo(audio);
-        trackInfo.html('<p>' + play_name + '</p>');
-        audioSection.html(audio);
-        return false;
-    });
     $('.tracks tbody tr td').not('.dl').click(function() {
 
         var audio = $('<audio>', {
@@ -21,7 +10,10 @@ $(document).ready(function() {
              autoplay : 'autoplay'
         });
 
-        var url = $(this).parent().find('a.html5').attr('href');
+        var track_item = $(this).parent().find('a.html5');
+        var url = $(track_item).attr('href');
+        var play_name = $(track_item).data('playing');
+        trackInfo.html('<p>' + play_name + '</p>');
         $('<source>').attr('src', url).appendTo(audio);
         audioSection.html(audio);
         return false;

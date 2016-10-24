@@ -16,6 +16,18 @@ form {
 
 }
 
+.button {
+  background-color: #e7e7e7;
+  border: none;
+  color: black;
+  padding: 3px 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px 7px;
+}
+
+
 table {
   td {
       text-align: left;
@@ -28,7 +40,7 @@ a {
   outline: none;
   .found {
     text-decoration: none;
-    .text-align: center;
+    text-align: center;
   }
 }
 
@@ -58,16 +70,11 @@ input {
   }
 
   .button {
-    background-color: #e7e7e7;
-    border: none;
-    color: black;
-    padding: 3px 3px;
-    text-align: center;
-    text-decoration: none;
     display: inline-block;
-    border-radius: 5px 7px;
   }
-
+  a {
+    text-decoration: none;
+  }
 }
 
 img {
@@ -89,12 +96,6 @@ img {
   height: 20px;
 }
 
-td.track_id, th.track_id {
-  visibility: hidden;
-}
-
-
-
 ol.main {
   list-style-type: square;
   li {
@@ -112,19 +113,6 @@ tbody tr:hover td {
   a {
     color: #3d0606
   }
-}
-
-.no_image {
-  width: 100px;
-  height: 100px;
-  border: solid 1px black;
-  background: grey;
-  display: flex;
-  justify-content: center; /* align horizontal */
-  align-items: center;
-  text-align: center;
-  text-decoration: none;
-
 }
 
 .player {
