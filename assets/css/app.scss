@@ -51,41 +51,21 @@ input {
   margin-top: 5px
 }
 
-.result {
-  margin-bottom: 6px;
-  margin-right: 6px;
-  padding: 5px;
-  border: 2px solid lighten($primary-color, 50%);
-  min-width: 300px;
-  width: 350px;
-  min-height: 100px;
-  box-shadow: gray 2px 2px;
-  border-radius: 8px 4px;
-  float: left;
-  table {
-    td {
-      text-align: left;
-      padding: 5px;
-      a {
-        display: inline;
-        text-decoration: none;
-        word-wrap: nowrap
-      }
-      a:hover {
-      text-decoration: underline
-      }
-    }
-  }
-  a.img {
-    display: block;
-    text-decoration: none;
-  }
-
-}
-
 .tracks, .albums {
   td, th {
     padding: 3px 3px;
+    cursor: pointer;
+  }
+
+  .button {
+    background-color: #e7e7e7;
+    border: none;
+    color: black;
+    padding: 3px 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px 7px;
   }
 
 }

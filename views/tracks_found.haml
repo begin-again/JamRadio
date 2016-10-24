@@ -17,7 +17,7 @@
     - taglist = ""
     - list.each do |g|
       - taglist += ", #{g}"
-    - taglist[2..30]
+    - taglist[2..80]
 
 = partial :nav
 - if locals[:results]
@@ -47,8 +47,8 @@
             %td
               %a.html5{href: track[:audio], data:{playing: track[:name][0..30]}}= track[:name][0..30]
             %td= fancy_seconds(track[:duration])
-            %td
-              %a{href: track[:audiodownload]} DL
+            %td.dl
+              %a.button{href: track[:audiodownload]} DL
             %td= track[:musicinfo][:vocalinstrumental]
             %td= track[:musicinfo][:lang]
             %td= parse_list(track[:musicinfo][:tags][:genres])
