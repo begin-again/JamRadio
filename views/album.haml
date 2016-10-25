@@ -20,7 +20,6 @@
 .artist
   %a{href: "/artist/id/#{locals[:artist][:id]}"}= "Show All From: #{locals[:artist][:name]}"
 
-
   - unless locals[:tracks].empty?
     .player
       #info
@@ -31,6 +30,10 @@
           %th Name
           %th Duration
           %th D/L
+      %tfoot
+        %tr
+          %td.nav_prev
+          %td.nav_next
       %tbody
         - locals[:tracks].each do |track|
           %tr

@@ -1,23 +1,24 @@
+=partial :nav
 - if locals[:results]
   - unless locals[:results].empty?
-    .results
-      %p= locals[:query]
-      - locals[:results].each do |album|
-        .result
-          %a.album{href: "/album/id/#{album[:id]}"}
-            %img{src: album[:image]}
-          %table
-            %tbody
-              %tr
-                %td
-                  %p Artist:
-                %td
-                  %a{href: "/artist/id/#{album[:artist_id]}" } "#{album[:artist_name]}"
-              %tr
-                %td
-                  %p Album:
-                %td
-                  %a{href: "/album/id/#{album[:album_id]}" } "#{album[:name]}"
+    %table
+      %thead
+        %tr
+          %th{colspan: 2, style: 'padding-left: 30px'} Album
+          %th Artist
+          %th DL
+      %tbody
+        - locals[:results].each do |album|
+          %tr
+            %td
+              %a{href: "/album/id/#{album[:id]}"}
+                %img{src: album[:image]}
+            %td
+              %a{href: "/album/id/#{album[:id]}"}= album[:name]
+            %td
+              %a{href: "/artist/id/#{album[:artist_id]}"}= album[:artist_name]
+            %td
+              %a.button{href: album[:zip]} DL
 - else
   - if locals[:headers]
     %p= locals[:headers][:status]

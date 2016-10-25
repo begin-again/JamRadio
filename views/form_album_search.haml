@@ -1,10 +1,10 @@
 %h2 Album Search
 
-%form{action: '/albums_found', method: 'post'}
+%form{action: '/albums', method: 'post'}
   %p
     %label{for: 'name'} Album Name
     %br/
-    %input{id: 'name', type: 'text', name: 'name'}
+    %input{id: 'name', type: 'text', name: 'name', required: '' }
   %p.sort Sort by
   %select{ name: 'sort_by'}
     %option{ value: 'name' } Name

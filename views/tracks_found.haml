@@ -1,24 +1,6 @@
 -# Tracks
 -# GET /v3.0/tracks
 
-- def fancy_seconds seconds
-  - mm, ss = seconds.to_i.divmod(60)
-  - hh, mm = mm.divmod(60)
-  - dd, hh = hh.divmod(24)
-  - if hh > 0
-    - "#{hh.to_s.rjust(2," ")}:#{mm.to_s.rjust(2," ")}:#{ss.to_s.rjust(2,"0")}"
-  - elsif mm > 0
-    - "#{mm.to_s.rjust(2," ")}:#{ss.to_s.rjust(2,"0")}"
-  - elsif ss > 0
-    - "00:#{ss.to_s.rjust(2,"0")}"
-
-- def parse_list list
-  - if list
-    - taglist = ""
-    - list.each do |g|
-      - taglist += ", #{g}"
-    - taglist[2..80]
-
 = partial :nav
 - if locals[:results]
   - unless locals[:results].empty?
@@ -36,24 +18,16 @@
           %th Type
           %th Lang
           %th Genre
+      %tfoot
+        %tr
+          %td{colspan: 5}
+          %td.nav
+            %a.prev.button{onclick: "getTracks(#{locals[:backward]}, '#{locals[:query]}')"} Previous
+          %td
+          %td.nav
+            %a.next.button{onclick: "getTracks(#{locals[:forward]}, '#{locals[:query]}')"} Next
       %tbody
-        - locals[:results].each do |track|
-          %tr
-            %td
-              %a{href: "/artist/id/#{track[:artist_id]}"}= track[:artist_name][0..30]
-            %td
-              %a{href: "/album/id/#{track[:album_id]}"}
-                %img{src: track[:album_image]}
-            %td
-              %a.html5{href: track[:audio], data:{playing: track[:name][0..30]}}= track[:name][0..30]
-            %td= fancy_seconds(track[:duration])
-            %td.dl
-              %a.button{href: track[:audiodownload]} DL
-            %td= track[:musicinfo][:vocalinstrumental]
-            %td= track[:musicinfo][:lang]
-            %td= parse_list(track[:musicinfo][:tags][:genres])
-
-
+        = partial :tracks, locals: locals
 - else
   - if locals[:headers]
     %p= locals[:headers][:status]

@@ -31,7 +31,7 @@ class App < Sinatra::Base
   post '/albums' do
     name = params[:name].to_s.scan(Word).join('+')
     sort_by = params[:sort_by]
-    query = "albums/tracks?namesearch=#{name}&order=#{sort_by}&imagesize=150"
+    query = "albums/tracks?namesearch=#{name}&order=#{sort_by}&imagesize=25"
     result = fetch(query)
     haml :albums_found, locals: {
       page_title: 'Albums',

@@ -1,7 +1,22 @@
 require './lib/net-stuff'
+require 'byebug'
 
 class App < Sinatra::Base
   include NetStuff
+
+  def getOffset direction, offset
+    o = offset.to_i
+    o = 0 if o < 0
+    if direction == :forward
+      o += 10
+    else
+      if (o - 10) < 0
+        o = 0
+      else
+        o -= 10
+      end
+    end
+  end
 
   get '/tracks/?' do
     haml :form_track_search, locals: {page_title: 'Tracks'}
@@ -27,7 +42,31 @@ class App < Sinatra::Base
     haml :tracks_found, locals: {
       page_title: 'tracks',
       headers: result[:headers],
-      results: result[:results]
+      results: result[:results],
+      forward: getOffset(:forward, 0),
+      backward: getOffset(:backward, 0),
+      query: query
       }
   end
+
+  post '/tracks/offset' do
+    offset = params[:offset].to_i || 0
+    query = params[:query]
+    result = fetch("#{query}&offset=#{offset}")
+
+    begin
+      haml :"_tracks",  locals: {
+        page_title: 'album',
+        headers: result[:headers],
+        results: result[:results],
+
+        forward: getOffset(:forward, offset),
+        backward: getOffset(:backward, offset),
+        query: query
+        }, layout: false
+    rescue Exception => e
+      "<h2>#{e.name}</h2>"
+    end
+  end
+
 end

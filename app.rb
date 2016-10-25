@@ -19,14 +19,19 @@ class App < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  assets do
+  assets {
     serve '/js',     from: 'assets/js'
     serve '/css',    from: 'assets/css'
     serve '/images', from: 'assets/images'
     css :main, ['/css/reset.css','/css/app.css']
     js  :main, ['/js/app.js']
-    css_compression :sass
-    js_compression :jsmin
+  }
+
+  configure :production do
+    assets {
+      css_compression :sass
+      js_compression :jsmin
+    }
   end
 
   Dir.glob('./routes/*.rb').each do |route|
