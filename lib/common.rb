@@ -21,4 +21,18 @@ module Common
     end
   end
 
+  def getOffset direction, offset, pgsize = 10
+    o = offset.to_i
+    o = 0 if o < 0
+    if direction == :forward
+      o += pgsize
+    else
+      if (o - pgsize) < 0
+        o = 0
+      else
+        o -= pgsize
+      end
+    end
+  end
+
 end

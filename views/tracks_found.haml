@@ -10,6 +10,7 @@
     %table.tracks
       %thead
         %tr
+          %td
           %th Artist
           %th Album
           %th Name
@@ -20,12 +21,12 @@
           %th Genre
       %tfoot
         %tr
-          %td{colspan: 5}
+          %td{colspan: 6}
           %td.nav
-            %a.prev.button{onclick: "getTracks(#{locals[:backward]}, '#{locals[:query]}')"} Previous
+            %a.prev.button{onclick: "getTracks('backward')"} Previous #{settings.page_size}
           %td
           %td.nav
-            %a.next.button{onclick: "getTracks(#{locals[:forward]}, '#{locals[:query]}')"} Next
+            %a.next.button{onclick: "getTracks('forward')"} Next #{settings.page_size}
       %tbody
         = partial :tracks, locals: locals
 - else

@@ -4,7 +4,7 @@ include Common
 
 class TestHelper;end
 
-describe Common, focus: true do
+describe Common do
   context '#parse_integer' do
     it 'should throw error on non integer-able object' do
       bogus = TestHelper.new
@@ -25,6 +25,20 @@ describe Common, focus: true do
     it 'should accept date object' do
       expected = Date.new(2009,10,12)
       expect( parse_date(expected) ).to eq(expected)
+    end
+  end
+  context '#getOffset' do
+    it 'should be zero' do
+      expect(getOffset(:backward, 5)).to eq(0)
+    end
+    it 'should advance by 10' do
+      expect(getOffset(:forward, 0)).to eq(10)
+    end
+    it 'should decriment by 10' do
+      expect(getOffset(:backward, 20)).to eq(10)
+    end
+    it 'should reject negative values and return 0' do
+      expect(getOffset(:backward, -10)).to eq(0)
     end
   end
 end

@@ -16,8 +16,10 @@
       - taglist += ", #{g}"
     - taglist[2..80]
 
+- row_num = locals[:offset].to_i
 - locals[:results].each do |track|
   %tr
+    %td.row= row_num += 1
     %td.artist
       %a{href: "/artist/id/#{track[:artist_id]}"}= track[:artist_name][0..30]
     %td.album
