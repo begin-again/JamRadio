@@ -24,10 +24,8 @@ module NetStuff
   # * returns JSON
 
   def fetch url
-
     response = nil
     begin
-      puts "Request Url: #{Base}#{url}&client_id=#{ClientID}&format=json"
       uri = URI.parse("#{Base}#{url}&client_id=#{ClientID}&format=json")
       if uri.host
         Net::HTTP.start(uri.host, uri.port,
@@ -36,7 +34,6 @@ module NetStuff
           response = http.request request # Net::HTTPResponse object
         end
         result = JSON.parse(response.body, symbolize_names: true)
-        puts result
         result
       else
         {headers: { status: 'error',error_message: "Bad Url: #{uri}", result_count: 0}}
