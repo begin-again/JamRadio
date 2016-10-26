@@ -17,8 +17,8 @@ form {
 }
 
 .button {
-  background-color: #e7e7e7;
-  border: none;
+  background-color: lighten($primary-color, 80%);
+  border: 1px;
   color: black;
   padding: 3px 3px;
   text-align: center;
@@ -44,6 +44,7 @@ a {
 }
 
 body {
+  margin-left: 5%; margin-right: 5%;
   font: 100% $font-stack;
   background: $primary-color;
   color: lighten($primary-color, 50%);
@@ -67,15 +68,13 @@ input {
     padding: 3px 3px;
     cursor: pointer;
   }
-
-  .button {
-    display: inline-block;
-  }
   a {
     text-decoration: none;
   }
-  .nav {
-    text-align: right;
+  tbody {
+    a:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -94,9 +93,7 @@ img {
     float: none;
   }
 }
-.track {
-  height: 20px;
-}
+
 
 ol.main {
   list-style-type: square;
@@ -110,17 +107,17 @@ tbody tr:nth-child(even) td {
 }
 
 tbody tr:hover td {
-  background: #3f7a89;
-  color: #3d0606;
+  background: lighten($primary-color, 50%);
+  color: $primary-color;
   a {
-    color: #3d0606
+    color: $primary-color;
   }
 }
 
 .player {
   margin: 5px 0px;
-  #info p {
-    color: #36bcb1;
+  #info {
+    color: lighten($primary-color, 50%);
     font-weight: bold;
   }
 }
