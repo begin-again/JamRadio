@@ -26,18 +26,29 @@ class App < Sinatra::Base
   get '/artist/id/:id' do
     query = "artists/albums/?id=#{params[:id]}&imagesize=50"
     result = fetch(query)
-    haml :artist, locals: {
-      headers: result[:headers],
-      artist: {
-        id: result[:results].first[:id],
-        name: result[:results].first[:name],
-        website: result[:results].first[:website],
-        image: result[:results].first[:image],
-        joindate: result[:results].first[:joindate]
-      },
-      albums: result[:results].first[:albums],
-      page_title: "Artist - #{result[:results].first[:name]}"
-    }
+    if result[:headers][:status] == 'success'
+      if result[:headers][:results_count] > 0
+        haml :artist, locals: {
+          headers: result[:headers],
+          artist: {
+            id: result[:results].first[:id],
+            name: result[:results].first[:name],
+            website: result[:results].first[:website],
+            image: result[:results].first[:image],
+            joindate: result[:results].first[:joindate]
+          },
+          albums: result[:results].first[:albums],
+          page_title: "Artist - #{result[:results].first[:name]}"
+        }
+      else
+        haml :artist, locals: {
+          headers: result[:headers],
+          artist: {no_data: true},
+          albums: {no_data: true},
+          page_title: "No Data"
+        }
+      end
+    end
   end
 
 end
